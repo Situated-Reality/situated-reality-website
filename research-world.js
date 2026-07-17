@@ -13,23 +13,21 @@ if(canvas&&world&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const ease=(a,b,t)=>smooth((t-a)/(b-a));
 
     const glasses=[
-      // Temples and bridge sit behind the lenses, giving the first chapter a side-on perspective.
-      {shape:'pill',x:-190,y:-4,w:188,h:14,fill:C.navy,rot:-.08},
-      {shape:'pill',x:218,y:-7,w:205,h:14,fill:C.navy,rot:.1},
-      {shape:'pill',x:38,y:0,w:74,h:14,fill:C.navy},
-      {shape:'ellipse',x:115,y:4,w:142,h:96,fill:'rgba(84,184,79,.54)',stroke:C.navy,sw:11},
-      {shape:'ellipse',x:-72,y:0,w:238,h:150,fill:C.glass,stroke:C.navy,sw:13},
-      // A single eye sits behind the near lens.
-      {shape:'circle',x:-72,y:2,w:82,h:82,fill:C.green},
-      {shape:'circle',x:-80,y:3,w:40,h:40,fill:C.navy},
-      {shape:'circle',x:-94,y:-12,w:17,h:17,fill:C.white},
-      // Two cyan interface windows and four amber compute modules match the SiR mark.
-      {shape:'tile',x:-208,y:32,w:92,h:42,fill:C.cyan},
-      {shape:'tile',x:-188,y:82,w:82,h:46,fill:C.cyan2},
-      {shape:'tile',x:154,y:-38,w:38,h:32,fill:C.amber},
-      {shape:'tile',x:198,y:-34,w:38,h:32,fill:C.amber},
-      {shape:'tile',x:154,y:9,w:38,h:32,fill:C.amber},
-      {shape:'tile',x:198,y:13,w:38,h:32,fill:C.amber}
+      // Oblique top view from the sketch: two temples recede behind two staggered lenses.
+      {shape:'pill',x:85,y:-38,w:230,h:14,fill:C.navy,rot:.84},
+      {shape:'pill',x:175,y:174,w:250,h:14,fill:C.navy,rot:.84},
+      {shape:'pill',x:2,y:4,w:14,h:68,fill:C.navy},
+      {shape:'ellipse',x:-42,y:-105,w:142,h:202,fill:C.glass,stroke:C.navy,sw:13,rot:-.06},
+      {shape:'ellipse',x:48,y:108,w:150,h:206,fill:'rgba(84,184,79,.62)',stroke:C.navy,sw:13,rot:.05},
+      {shape:'circle',x:-68,y:-146,w:18,h:18,fill:C.white},
+      // Two cyan interface windows orbit the first lens.
+      {shape:'tile',x:-166,y:-82,w:98,h:62,fill:C.cyan},
+      {shape:'tile',x:62,y:-218,w:82,h:64,fill:C.cyan2},
+      // Four amber compute modules orbit the second lens.
+      {shape:'tile',x:-88,y:60,w:88,h:62,fill:C.amber},
+      {shape:'tile',x:28,y:6,w:54,h:52,fill:C.amber},
+      {shape:'tile',x:156,y:112,w:92,h:64,fill:C.amber},
+      {shape:'tile',x:-54,y:226,w:76,h:62,fill:C.amber}
     ];
 
     const headset=[
