@@ -105,4 +105,6 @@ html[data-theme=dark] .teaching-group p,html[data-theme=dark] .teaching-group .c
 html[data-theme=dark] .teaching-group .supervision-note{color:#53606b;background:rgba(255,255,255,.48)}
 html[data-theme=dark] .logo-strip{color-scheme:only light;background:linear-gradient(135deg,#f5ecdf 0%,#ead8c1 100%)}
 @media(max-width:600px){.theme-toggle{width:34px;height:34px;font-size:16px}}
+.site-head{gap:10px;padding-right:clamp(18px,2.5vw,36px);padding-left:clamp(18px,2.5vw,36px)}.site-brand{order:1}.site-nav{order:2;margin-left:auto}.theme-toggle{order:3;margin-left:4px}.nav-toggle{order:4}
+@media(max-width:900px){.site-nav{margin-left:0}.theme-toggle{margin-left:auto}.site-brand{margin-right:0}}
 .research-outro{position:relative;z-index:4}.research-outro__image{width:100%;margin:0 0 30px}.research-outro__image img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:center 43%}.research-outro__image figcaption{padding-top:10px;color:var(--muted);font:650 9px/1.45 var(--mono);letter-spacing:.06em}.research-outro__image a{font-weight:700;text-decoration-color:var(--yellow-ink);text-underline-offset:3px}

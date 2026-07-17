@@ -9,7 +9,7 @@ if(head){
   const setTheme=theme=>{document.documentElement.dataset.theme=theme;themeButton.setAttribute('aria-pressed',String(theme==='dark'));themeButton.setAttribute('aria-label',theme==='dark'?'Switch to light mode':'Switch to dark mode');themeButton.title=theme==='dark'?'Light mode':'Dark mode';themeButton.innerHTML=`<span aria-hidden="true">${theme==='dark'?'☀':'◐'}</span>`};
   setTheme(savedTheme==='dark'?'dark':'light');
   themeButton.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next);try{localStorage.setItem('sir-theme',next)}catch(error){}});
-  head.insertBefore(themeButton,toggle||nav);
+  head.appendChild(themeButton);
 }
 if(toggle&&nav)toggle.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open))});
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.12});
