@@ -13,21 +13,20 @@ if(canvas&&world&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const ease=(a,b,t)=>smooth((t-a)/(b-a));
 
     const glasses=[
-      // The photographed sketch is read horizontally: two staggered lenses, with both temples receding behind them.
-      {shape:'pill',x:30,y:-58,w:250,h:14,fill:C.navy,rot:-.56},
-      {shape:'pill',x:246,y:-105,w:245,h:14,fill:C.navy,rot:-.46},
-      {shape:'pill',x:0,y:0,w:78,h:14,fill:C.navy,rot:-.3},
-      {shape:'ellipse',x:-108,y:42,w:202,h:142,fill:C.glass,stroke:C.navy,sw:13,rot:.06},
-      {shape:'ellipse',x:108,y:-42,w:206,h:150,fill:'rgba(84,184,79,.62)',stroke:C.navy,sw:13,rot:-.05},
-      {shape:'circle',x:-150,y:18,w:18,h:18,fill:C.white},
+      // Horizontal oblique view from the corrected sketch: parallel temples sit behind two lenses.
+      {shape:'pill',x:-8,y:-92,w:260,h:14,fill:C.navy,rot:-.56},
+      {shape:'pill',x:232,y:-82,w:250,h:14,fill:C.navy,rot:-.52},
+      {shape:'pill',x:0,y:4,w:80,h:14,fill:C.navy},
+      {shape:'ellipse',x:-122,y:6,w:214,h:142,fill:C.glass,stroke:C.navy,sw:13,rot:.02},
+      {shape:'ellipse',x:112,y:10,w:206,h:146,fill:'rgba(84,184,79,.62)',stroke:C.navy,sw:13,rot:.03},
       // Two cyan interface windows orbit the first lens.
-      {shape:'tile',x:-222,y:-60,w:98,h:62,fill:C.cyan},
-      {shape:'tile',x:-84,y:154,w:82,h:64,fill:C.cyan2},
+      {shape:'tile',x:-244,y:-92,w:98,h:62,fill:C.cyan},
+      {shape:'tile',x:-58,y:116,w:82,h:64,fill:C.cyan2},
       // Four amber compute modules orbit the second lens.
-      {shape:'tile',x:18,y:72,w:88,h:62,fill:C.amber},
-      {shape:'tile',x:42,y:-126,w:54,h:52,fill:C.amber},
-      {shape:'tile',x:218,y:28,w:92,h:64,fill:C.amber},
-      {shape:'tile',x:164,y:-148,w:76,h:62,fill:C.amber}
+      {shape:'tile',x:18,y:-38,w:54,h:52,fill:C.amber},
+      {shape:'tile',x:132,y:-92,w:88,h:62,fill:C.amber},
+      {shape:'tile',x:74,y:116,w:76,h:62,fill:C.amber},
+      {shape:'tile',x:206,y:110,w:92,h:64,fill:C.amber}
     ];
 
     const headset=[
@@ -36,13 +35,12 @@ if(canvas&&world&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
       {shape:'pill',x:0,y:4,w:408,h:150,fill:C.glass,stroke:C.cyan2,sw:5},
       {shape:'pill',x:-242,y:4,w:82,h:58,fill:C.navy},
       {shape:'pill',x:242,y:4,w:82,h:58,fill:C.navy},
-      {shape:'tile',x:-140,y:-28,w:78,h:34,fill:C.cyan},
-      {shape:'tile',x:-120,y:22,w:66,h:38,fill:C.cyan2},
+      {shape:'tile',x:-138,y:-34,w:98,h:62,fill:C.cyan},
+      {shape:'tile',x:-116,y:38,w:82,h:64,fill:C.cyan2},
       {shape:'tile',x:145,y:-34,w:40,h:34,fill:C.amber},
       {shape:'tile',x:191,y:-34,w:40,h:34,fill:C.amber},
       {shape:'tile',x:145,y:14,w:40,h:34,fill:C.amber},
       {shape:'tile',x:191,y:14,w:40,h:34,fill:C.amber},
-      {shape:'circle',x:-145,y:-36,w:22,h:22,fill:C.white},
       {shape:'line',x:0,y:58,w:320,h:0,fill:C.line,sw:4}
     ];
 
@@ -53,8 +51,8 @@ if(canvas&&world&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
       {shape:'circle',x:-10,y:18,w:62,h:62,fill:C.navy},
       {shape:'circle',x:-32,y:-8,w:24,h:24,fill:C.white},
       {shape:'eye',x:0,y:20,w:430,h:154,fill:C.navy,sw:15},
-      {shape:'pill',x:-187,y:0,w:104,h:42,fill:C.cyan},
-      {shape:'pill',x:-174,y:54,w:84,h:54,fill:C.cyan2},
+      {shape:'tile',x:-187,y:0,w:98,h:62,fill:C.cyan},
+      {shape:'tile',x:-174,y:68,w:82,h:64,fill:C.cyan2},
       {shape:'tile',x:170,y:-24,w:38,h:34,fill:C.amber},
       {shape:'tile',x:216,y:-24,w:38,h:34,fill:C.amber},
       {shape:'tile',x:170,y:24,w:38,h:34,fill:C.amber},
