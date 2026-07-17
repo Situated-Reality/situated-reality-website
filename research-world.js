@@ -13,16 +13,23 @@ if(canvas&&world&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const ease=(a,b,t)=>smooth((t-a)/(b-a));
 
     const glasses=[
-      {shape:'ellipse',x:-112,y:0,w:184,h:112,fill:C.glass,stroke:C.navy,sw:12},
-      {shape:'ellipse',x:112,y:0,w:184,h:112,fill:C.glass,stroke:C.navy,sw:12},
-      {shape:'pill',x:0,y:0,w:54,h:12,fill:C.navy},
-      {shape:'pill',x:-232,y:-8,w:130,h:12,fill:C.navy,rot:-.08},
-      {shape:'pill',x:232,y:-8,w:130,h:12,fill:C.navy,rot:.08},
-      {shape:'pill',x:-183,y:34,w:70,h:22,fill:C.cyan},
-      {shape:'tile',x:174,y:-24,w:34,h:30,fill:C.amber},
-      {shape:'tile',x:214,y:-20,w:34,h:30,fill:C.amber},
-      {shape:'tile',x:174,y:18,w:34,h:30,fill:C.amber},
-      {shape:'circle',x:-145,y:-25,w:18,h:18,fill:C.white}
+      // Temples and bridge sit behind the lenses, giving the first chapter a side-on perspective.
+      {shape:'pill',x:-190,y:-4,w:188,h:14,fill:C.navy,rot:-.08},
+      {shape:'pill',x:218,y:-7,w:205,h:14,fill:C.navy,rot:.1},
+      {shape:'pill',x:38,y:0,w:74,h:14,fill:C.navy},
+      {shape:'ellipse',x:115,y:4,w:142,h:96,fill:'rgba(84,184,79,.54)',stroke:C.navy,sw:11},
+      {shape:'ellipse',x:-72,y:0,w:238,h:150,fill:C.glass,stroke:C.navy,sw:13},
+      // A single eye sits behind the near lens.
+      {shape:'circle',x:-72,y:2,w:82,h:82,fill:C.green},
+      {shape:'circle',x:-80,y:3,w:40,h:40,fill:C.navy},
+      {shape:'circle',x:-94,y:-12,w:17,h:17,fill:C.white},
+      // Two cyan interface windows and four amber compute modules match the SiR mark.
+      {shape:'tile',x:-208,y:32,w:92,h:42,fill:C.cyan},
+      {shape:'tile',x:-188,y:82,w:82,h:46,fill:C.cyan2},
+      {shape:'tile',x:154,y:-38,w:38,h:32,fill:C.amber},
+      {shape:'tile',x:198,y:-34,w:38,h:32,fill:C.amber},
+      {shape:'tile',x:154,y:9,w:38,h:32,fill:C.amber},
+      {shape:'tile',x:198,y:13,w:38,h:32,fill:C.amber}
     ];
 
     const headset=[
