@@ -118,7 +118,7 @@ html[data-theme=dark] .about-note{background:rgba(240,178,30,.1);color:#eef5f7}
 .about-eye-section .about-intro>div:first-child{padding:26px;background:rgba(255,255,255,.94);border:1px solid rgba(16,25,39,.08);backdrop-filter:blur(9px)}
 .about-eye-world{--gx:0;--gy:0;position:absolute;z-index:1;left:50%;bottom:0;width:min(920px,94vw);height:clamp(280px,29vw,380px);transform:translateX(-50%);pointer-events:none}
 .about-eye{position:absolute;left:50%;top:53%;width:clamp(240px,27vw,350px);height:clamp(135px,15vw,195px);transform:translate(-50%,-50%)}
-.about-eye__cap{position:absolute;z-index:1;left:4%;top:-8%;width:92%;height:77%;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(145deg,#68d8d8,#45c3c8);filter:drop-shadow(0 10px 18px rgba(23,52,92,.1))}
+.about-eye__cap{position:absolute;z-index:1;left:4%;top:-1%;width:92%;height:68%;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(145deg,#68d8d8,#45c3c8);filter:drop-shadow(0 10px 18px rgba(23,52,92,.1))}
 .about-eye__sclera{position:absolute;z-index:2;left:3%;bottom:5%;width:94%;height:68%;overflow:hidden;border:clamp(9px,1.2vw,15px) solid #17345c;border-radius:52% 48% 52% 48%/64% 62% 48% 46%;background:#e8f4ef;box-shadow:0 18px 55px rgba(23,52,92,.2);transform-origin:center;transition:transform .12s ease}
 .about-eye__iris{position:absolute;left:50%;top:50%;width:42%;aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,#69bf52,#3e9d45);transform:translate(calc(-50% + var(--gx)*26px),calc(-50% + var(--gy)*15px));transition:transform .16s cubic-bezier(.2,.8,.2,1)}
 .about-eye__pupil{position:absolute;left:50%;top:50%;width:48%;aspect-ratio:1;border-radius:50%;background:#17345c;transform:translate(-50%,-50%)}
