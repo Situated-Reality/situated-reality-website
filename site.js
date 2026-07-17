@@ -66,9 +66,11 @@ if(aboutEye){
     x=clampGaze(x);y=clampGaze(y);
     world.style.setProperty('--gx',x.toFixed(3));
     world.style.setProperty('--gy',y.toFixed(3));
-    const shifts=[[-34-x*18,-y*12],[-18+x*12,22-y*18],[24+x*20,-14+y*10],[-22-x*18,16-y*12],[30-x*22,18+y*16],[36+x*14,-18-y*15]];
+    const directions=[[-1,-.25],[-1,.65],[.45,-.7],[1,-.45],[.45,.75],[1,.55]];
     windows.forEach((item,index)=>{
-      const [mx,my]=shifts[index];
+      const [dx,dy]=directions[index];
+      const attention=Math.max(0,dx*x+dy*y);
+      const mx=x*38*attention,my=y*25*attention;
       item.style.setProperty('--mx',`${mx}px`);
       item.style.setProperty('--my',`${my}px`);
     });
