@@ -24,7 +24,7 @@ try{
   };
   const S=(x,y,z,rx=0,ry=0,rz=0,sx=1,sy=1,sz=1)=>({p:new THREE.Vector3(x,y,z),r:new THREE.Euler(rx,ry,rz),s:new THREE.Vector3(sx,sy,sz)});
   const parts=[];
-  const add=(geometry,material,states)=>{const mesh=new THREE.Mesh(geometry,material);mesh.castShadow=true;mesh.receiveShadow=true;root.add(mesh);parts.push({mesh,states});return mesh};
+  const add=(geometry,material,states)=>{const mesh=new THREE.Mesh(geometry,material);mesh.castShadow=true;mesh.receiveShadow=true;root.add(mesh);parts.push({mesh,states,phase:(parts.length%9)/9});return mesh};
   const box=new THREE.BoxGeometry(1,1,1),orb=new THREE.IcosahedronGeometry(.34,2);
 
   // Two transparent lenses remain the perceptual centre at every scale.
@@ -62,7 +62,12 @@ try{
     add(orb,i===0?mats.white:mats.cyan,[S(Math.cos(a)*2.7,Math.sin(a)*.75,.42),S(-2.3+Math.cos(a)*2.8,.15+Math.sin(a)*1.6,-.2+Math.sin(a)*.35),S(Math.cos(a)*3.15,-.2+Math.sin(a)*1.35,.15+Math.cos(a)*.5),S(i===0?-.45:Math.cos(a)*1.15,i===0?.35:Math.sin(a)*.85,.28,0,0,0,i===0?.65:.2,i===0?.65:.2,i===0?.65:.2)]);
   }
 
-  const mix=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t),clamp=t=>Math.max(0,Math.min(1,t));
+  // The final 3D identity adopts the flat mark's left-cyan / right-amber grammar.
+  add(box,mats.cyan,[S(-2.6,-.3,.1,0,0,0,.05,.05,.05),S(-2.2,.75,-.1,0,.2,-.08,.8,.24,.12),S(-2.4,-.55,.1,0,.15,.06,.72,.25,.16),S(-1.55,-.12,.34,0,0,-.08,.82,.22,.15)]);
+  add(box,mats.cyan,[S(-2.3,-.7,.1,0,0,0,.05,.05,.05),S(-1.75,-.85,.05,0,-.16,.06,.68,.3,.12),S(-1.8,-1.05,.2,0,.12,-.04,.64,.28,.15),S(-1.42,-.5,.32,0,0,.08,.68,.25,.15)]);
+  add(new THREE.CylinderGeometry(1,1,.18,64),mats.navy,[S(0,0,.2,Math.PI/2,0,0,.02,.02,.02),S(0,0,.2,Math.PI/2,0,0,.02,.02,.02),S(0,0,.2,Math.PI/2,0,0,.02,.02,.02),S(0,0,.33,Math.PI/2,0,0,.52,.52,1)]);
+
+  const mix=(a,b,t)=>a+(b-a)*t,smooth=t=>t*t*(3-2*t),smoother=t=>t*t*t*(t*(t*6-15)+10),clamp=t=>Math.max(0,Math.min(1,t));
   let progress=0,active=true;
   const updateScroll=()=>{const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight);progress=clamp(-r.top/travel);active=r.bottom>0&&r.top<innerHeight};
   const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};
@@ -73,7 +78,7 @@ try{
     let from=0,to=0,t=0;
     if(progress<.22){from=0;to=0}else if(progress<.38){from=0;to=1;t=(progress-.22)/.16}else if(progress<.5){from=1;to=1}else if(progress<.67){from=1;to=2;t=(progress-.5)/.17}else if(progress<.82){from=2;to=2}else{from=2;to=3;t=(progress-.82)/.18}
     const q=smooth(clamp(t));
-    for(const {mesh,states} of parts){const A=states[from],B=states[to];mesh.position.set(mix(A.p.x,B.p.x,q),mix(A.p.y,B.p.y,q),mix(A.p.z,B.p.z,q));mesh.rotation.set(mix(A.r.x,B.r.x,q),mix(A.r.y,B.r.y,q)+Math.sin(q*Math.PI)*.42,mix(A.r.z,B.r.z,q));mesh.scale.set(mix(A.s.x,B.s.x,q),mix(A.s.y,B.s.y,q),mix(A.s.z,B.s.z,q))}
+    for(const {mesh,states,phase} of parts){const A=states[from],B=states[to],u=from===2&&to===3?smoother(clamp((t-phase*.11)/(1-phase*.11))):q;mesh.position.set(mix(A.p.x,B.p.x,u),mix(A.p.y,B.p.y,u),mix(A.p.z,B.p.z,u));mesh.rotation.set(mix(A.r.x,B.r.x,u),mix(A.r.y,B.r.y,u)+Math.sin(u*Math.PI)*.42,mix(A.r.z,B.r.z,u));mesh.scale.set(mix(A.s.x,B.s.x,u),mix(A.s.y,B.s.y,u),mix(A.s.z,B.s.z,u))}
     const mobile=innerWidth<=900;root.position.x=mobile?0:-3;root.rotation.y=Math.sin(time*.18)*.035+(progress-.5)*.07;root.position.y=Math.sin(time*.32)*.055;
     camera.position.x=(mobile?0:-1.3)+Math.sin(progress*Math.PI)*.65;camera.position.y=.45+Math.sin(progress*Math.PI*2)*.25;camera.position.z=18-Math.sin(progress*Math.PI)*1.2;camera.lookAt(mobile?0:-2.05,0,0);
     cyanLight.position.x=-5+progress*5;amberLight.position.x=2-progress*2;renderer.render(scene,camera);
