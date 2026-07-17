@@ -159,3 +159,11 @@ html[data-theme=dark] .about-eye__sclera{background:#dcece8}
 html[data-theme=dark] .how-note{color:#b9c5ce;background:rgba(255,255,255,.045)}
 @media(max-width:600px){.how-campus-image img{height:300px}.how-eye-wrap{height:250px}.how-eye-wrap .about-eye-world{height:240px;transform:translateX(-50%) scale(.78)}}
 .research-outro{position:relative;z-index:4}.research-outro__image{width:100%;margin:0 0 30px}.research-outro__image img{width:100%;aspect-ratio:16/8;object-fit:cover;object-position:center 43%}.research-outro__image figcaption{padding-top:10px;color:var(--muted);font:650 9px/1.45 var(--mono);letter-spacing:.06em}.research-outro__image a{font-weight:700;text-decoration-color:var(--yellow-ink);text-underline-offset:3px}
+
+/* Join page refinements */
+.opening-note{grid-column:2;grid-row:1 / span 2;margin:0;padding:20px 22px;border-left:3px solid var(--yellow);color:var(--muted);background:#fff8df;font-size:1.03rem;line-height:1.7}
+.visitor-list{display:grid;gap:10px;margin:18px 0 24px;padding-left:1.2em}.visitor-list li::marker{color:var(--yellow-ink)}.funded-visitor{text-decoration:underline;text-decoration-color:var(--yellow-ink);text-decoration-thickness:2px;text-underline-offset:3px}
+.reading-list .citation-meta{font-size:12px}
+.reading-section{padding-bottom:clamp(36px,5vw,68px)}.final-thought-section{padding-top:0}
+html[data-theme=dark] .opening-note{color:#f3eadb;background:#2b2418}
+@media(max-width:900px){.opening-note{grid-column:1;grid-row:auto}}
