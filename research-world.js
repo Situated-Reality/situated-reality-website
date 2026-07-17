@@ -13,29 +13,31 @@ if(canvas&&world&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const ease=(a,b,t)=>smooth((t-a)/(b-a));
 
     const glasses=[
-      // Oblique top view from the sketch: two temples recede behind two staggered lenses.
-      {shape:'pill',x:85,y:-38,w:230,h:14,fill:C.navy,rot:.84},
-      {shape:'pill',x:175,y:174,w:250,h:14,fill:C.navy,rot:.84},
-      {shape:'pill',x:2,y:4,w:14,h:68,fill:C.navy},
-      {shape:'ellipse',x:-42,y:-105,w:142,h:202,fill:C.glass,stroke:C.navy,sw:13,rot:-.06},
-      {shape:'ellipse',x:48,y:108,w:150,h:206,fill:'rgba(84,184,79,.62)',stroke:C.navy,sw:13,rot:.05},
-      {shape:'circle',x:-68,y:-146,w:18,h:18,fill:C.white},
+      // The photographed sketch is read horizontally: two staggered lenses, with both temples receding behind them.
+      {shape:'pill',x:30,y:-58,w:250,h:14,fill:C.navy,rot:-.56},
+      {shape:'pill',x:246,y:-105,w:245,h:14,fill:C.navy,rot:-.46},
+      {shape:'pill',x:0,y:0,w:78,h:14,fill:C.navy,rot:-.3},
+      {shape:'ellipse',x:-108,y:42,w:202,h:142,fill:C.glass,stroke:C.navy,sw:13,rot:.06},
+      {shape:'ellipse',x:108,y:-42,w:206,h:150,fill:'rgba(84,184,79,.62)',stroke:C.navy,sw:13,rot:-.05},
+      {shape:'circle',x:-150,y:18,w:18,h:18,fill:C.white},
       // Two cyan interface windows orbit the first lens.
-      {shape:'tile',x:-166,y:-82,w:98,h:62,fill:C.cyan},
-      {shape:'tile',x:62,y:-218,w:82,h:64,fill:C.cyan2},
+      {shape:'tile',x:-222,y:-60,w:98,h:62,fill:C.cyan},
+      {shape:'tile',x:-84,y:154,w:82,h:64,fill:C.cyan2},
       // Four amber compute modules orbit the second lens.
-      {shape:'tile',x:-88,y:60,w:88,h:62,fill:C.amber},
-      {shape:'tile',x:28,y:6,w:54,h:52,fill:C.amber},
-      {shape:'tile',x:156,y:112,w:92,h:64,fill:C.amber},
-      {shape:'tile',x:-54,y:226,w:76,h:62,fill:C.amber}
+      {shape:'tile',x:18,y:72,w:88,h:62,fill:C.amber},
+      {shape:'tile',x:42,y:-126,w:54,h:52,fill:C.amber},
+      {shape:'tile',x:218,y:28,w:92,h:64,fill:C.amber},
+      {shape:'tile',x:164,y:-148,w:76,h:62,fill:C.amber}
     ];
 
     const headset=[
-      {shape:'arc',x:0,y:-14,w:480,h:260,fill:C.cyan,sw:30},
+      {shape:'arc',x:0,y:-14,w:380,h:260,fill:C.cyan,sw:30},
       {shape:'pill',x:0,y:2,w:450,h:202,fill:C.navy},
       {shape:'pill',x:0,y:4,w:408,h:150,fill:C.glass,stroke:C.cyan2,sw:5},
-      {shape:'pill',x:-242,y:4,w:82,h:58,fill:C.cyan},
+      {shape:'pill',x:-242,y:4,w:82,h:58,fill:C.navy},
       {shape:'pill',x:242,y:4,w:82,h:58,fill:C.navy},
+      {shape:'tile',x:-140,y:-28,w:78,h:34,fill:C.cyan},
+      {shape:'tile',x:-120,y:22,w:66,h:38,fill:C.cyan2},
       {shape:'tile',x:145,y:-34,w:40,h:34,fill:C.amber},
       {shape:'tile',x:191,y:-34,w:40,h:34,fill:C.amber},
       {shape:'tile',x:145,y:14,w:40,h:34,fill:C.amber},
