@@ -54,3 +54,39 @@ if(cinematic){
   addEventListener('resize',requestCinematic,{passive:true});
   updateCinematic();
 }
+
+const aboutEye=document.querySelector('[data-about-eye]');
+if(aboutEye){
+  const world=aboutEye.querySelector('.about-eye-world');
+  const windows=[...aboutEye.querySelectorAll('.about-window')];
+  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer=matchMedia('(pointer: fine)').matches;
+  const clampGaze=value=>Math.max(-1,Math.min(1,value));
+  const setGaze=(x,y)=>{
+    x=clampGaze(x);y=clampGaze(y);
+    world.style.setProperty('--gx',x.toFixed(3));
+    world.style.setProperty('--gy',y.toFixed(3));
+    const shifts=[[-34-x*18,-y*12],[-18+x*12,22-y*18],[24+x*20,-14+y*10],[-22-x*18,16-y*12],[30-x*22,18+y*16],[36+x*14,-18-y*15]];
+    windows.forEach((item,index)=>{
+      const [mx,my]=shifts[index];
+      item.style.setProperty('--mx',`${mx}px`);
+      item.style.setProperty('--my',`${my}px`);
+    });
+  };
+  if(!reducedMotion){
+    let blinkTimer;
+    const scheduleBlink=()=>{blinkTimer=setTimeout(()=>{world.classList.add('is-blinking');setTimeout(()=>world.classList.remove('is-blinking'),150);scheduleBlink()},2400+Math.random()*3000)};
+    scheduleBlink();
+    if(finePointer){
+      aboutEye.addEventListener('pointermove',event=>{
+        const rect=aboutEye.getBoundingClientRect();
+        setGaze((event.clientX-(rect.left+rect.width/2))/(rect.width*.44),(event.clientY-(rect.top+rect.height*.7))/(rect.height*.34));
+      },{passive:true});
+      aboutEye.addEventListener('pointerleave',()=>setGaze(0,0),{passive:true});
+    }else{
+      world.classList.add('is-autonomous');
+      let phase=0;
+      setInterval(()=>{phase+=.82;setGaze(Math.sin(phase),Math.cos(phase*.7)*.55)},1800);
+    }
+  }else setGaze(0,0);
+}
