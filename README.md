@@ -25,7 +25,7 @@ The site includes:
 - [Research](https://www.situated-reality.org/research.html) — research pillars and themes
 - [Publications](https://www.situated-reality.org/publications.html) — peer-reviewed publications and awards
 - [Teaching](https://www.situated-reality.org/teaching.html) — current teaching and earlier supervision
-- [Join Us](https://www.situated-reality.org/join.html) — PhD, postdoctoral, research assistant and visiting opportunities
+- [Join Us](https://www.situated-reality.org/join-us) — PhD, postdoctoral, research assistant and visiting opportunities
 
 ## Technical overview
 
@@ -38,7 +38,9 @@ This is a lightweight static website built with semantic HTML, CSS and vanilla J
 ├── research.html       # Research themes
 ├── publications.html   # Publications
 ├── teaching.html       # Teaching
-├── join.html           # Opportunities and application guidance
+├── join-us/            # Opportunities and application guidance
+│   └── index.html
+├── join.html           # Legacy redirect to /join-us
 ├── site.css            # Shared visual system and responsive layout
 ├── site.js             # Navigation, reveal effects and publication search
 └── assets/             # Brand, campus, research and team imagery
